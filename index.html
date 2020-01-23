@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Resumen</title>
+</head>
+
+<body>
+    <center><h1>Mastering JS Object 2</h1></center>
+    <h3>Inmersión en los principios de la OOP</h3>
+    <div>
+        En el capítulo anterior, presentamos objetos y su uso básico en JavaScript.<br> Tenemos
+        visto que los objetos tienen un papel clave en el lenguaje, <br>pero muchos desarrolladores consideran JavaScript
+        enfoque de gestión de objetos simple en comparación con la gestión de objetos de Java,<br> C #,
+        y otros idiomas OOP.
+    </div>
+    <br>
+    <div>
+        Muchos desarrolladores no consideran JavaScript como un verdadero lenguaje orientado a objetos,<br> sino solo un
+        lenguaje con un uso extravagante de objetos
+    </div>
+    <br>
+    <h3>OOP principles</h3>
+    <div>
+        OOP es uno de los paradigmas de programación más populares. <br> Muchos desarrolladores usan idiomas
+        basado en este modelo de programación como C ++, Java, C #, Smalltalk, Objective-C y muchos
+        otro
+        <br><br>
+        Asociación: esta es la capacidad del objeto para referir otro objeto independiente
+            Agregación: esta es la capacidad del objeto para incrustar uno o más independientes
+            objetos
+            Composición: esta es la capacidad del objeto para incrustar uno o más dependientes
+            objetos
+            Comúnmente, el segundo requisito se cumple si un idioma admite lo siguiente
+            principios:
+            Encapsulación: esta es la capacidad de concentrarse en una sola entidad de datos y
+            código que lo manipula, ocultando sus detalles internos
+            Herencia: este es el mecanismo por el cual un objeto adquiere algunos o todos
+            características de uno o más objetos
+            Polimorfismo: esta es la capacidad de procesar objetos de manera diferente en función de su
+            tipo o estructura de datos
+    </div>
+    <h3>Is JavaScript Object Oriented?</h3>
+    <div>
+        Muchos critican
+        JavaScript porque los desarrolladores pueden escribir código que infringe los principios de OOP. Pero esto es
+        solo una elección del programador, no una restricción de idioma. También sucede con otros
+        lenguajes de programación, como C ++.
+        Podemos concluir que la falta de clases abstractas y dejar al desarrollador libre de usar o no
+        las características que admiten los principios de OOP no son un obstáculo real para considerar JavaScript como OOP
+        idioma. Entonces, analicemos en las siguientes secciones cómo JavaScript admite la abstracción y
+        Principios de OOP
+    </div>
+    <h3>Abstraction and modeling support</h3>
+    <div>
+        El primer requisito para que consideremos un lenguaje como Orientado a Objetos es su apoyo a
+        modelar un problema a través de objetos. Ya sabemos que JavaScript admite objetos, pero
+        aquí deberíamos determinar si son compatibles para poder modelar la realidad.
+        De hecho, en la Programación Orientada a Objetos tratamos de modelar entidades y procesos del mundo real.
+        y representarlos en nuestro software.
+    </div>
+    <h3>Association</h3>
+    <div>
+        La asociación es una relación entre dos o más objetos donde cada objeto es independiente
+        el uno del otro. Esto significa que un objeto puede existir sin el otro y ningún objeto posee el
+        otro.
+    </div>
+    <br>
+    <div>
+        
+          function Person(name, surname) {<br>
+            this.name = name;<br>
+            this.surname = surname;<br>
+            this.parent = null;<br>
+            }<br>
+            var johnSmith = new Person("John", "Smith");<br>
+            var fredSmith = new Person("Fred", "Smith");<br>
+            fredSmith.parent = johnSmith;<br>
+    </div>
+    <h3>Aggregation</h3>
+    <div>
+        La agregación es una forma especial de relación de asociación donde un objeto tiene un papel principal
+        que el otro Por lo general, este rol principal determina un tipo de propiedad de un objeto en
+        relación con el otro. El objeto propietario a menudo se denomina agregado y el objeto propietario es
+        componente llamado Sin embargo, cada objeto tiene una vida independiente.
+    </div><br>
+    <div>
+        var company = {<br>
+            name: "ACME Inc.",<br>
+            employees: []<br>
+           };<br>
+           var johnSmith = new Person("John", "Smith");<br>
+           var marioRossi = new Person("Mario", "Rossi");<br>
+           company.employees.push(johnSmith);<br>
+           company.employees.push(marioRossi);<br>
+    </div>
+    <h3>Composition</h3>
+    <div>
+La composición es un tipo fuerte de agregación, donde cada objeto componente no tiene
+vida independiente sin su dueño, el agregado. Considere el siguiente ejemplo:
+    </div><br>
+    <div>
+        var person = {name: "John",<br>
+                    surname: "Smith",<br>
+                    address: {<br>
+                    street: "123 Duncannon Street",<br>
+                    city: "London",<br>
+                    country: "United Kingdom"<br>
+                    }};<br>
+    </div>
+    <h3>OOP principles support</h3><br>
+    <div>
+
+        El segundo requisito que nos permite considerar JavaScript como un objeto orientado
+        el lenguaje implica el apoyo de al menos tres principios: encapsulación, herencia y
+        polimorfismo. Analicemos cómo JavaScript admite cada uno de estos principios.
+    </div><br>
+    <h3>Encapsulation</h3>
+    <div>
+        Los objetos son centrales para el modelo de Programación Orientada a Objetos, y representan el
+        expresión típica de encapsulación, es decir, la capacidad de concentrar en una entidad ambos datos
+        (propiedades) y funciones (métodos), ocultando los detalles internos.
+    </div>
+    <h3></h3><br>
+    <div>
+        var company = {<br>
+            name: "ACME Inc.",<br>
+            employees: [],<br>
+            sortEmployeesByName: function() {...}<br>
+           };<br>
+    </div><br>
+    <div>
+        
+En este caso, el principio de encapsulación no se ha implementado completamente. Un general
+El enfoque para evitar el acceso directo a las propiedades relevantes es reemplazarlas con métodos.
+    </div><br>
+    <div>
+        function Company(name) {<br>
+            var employees = [];<br>
+            this.name = name;<br>
+            this.getEmployees = function() {<br>
+            return employees;<br>
+            };<br>
+            this.addEmployee = function(employee) {<br>
+            employees.push(employee);<br>
+            };<br>
+            this.sortEmployeesByName = function() {<br>
+            ...<br>
+            };<br>
+           }<br>
+           var company = new Company("ACME Inc.");<br>
+    </div><br>
+    <h3>Inheritance</h3><br>
+    <div>
+        
+OOP, la herencia permite que nuevos objetos adquieran las propiedades de los objetos existentes. Esta
+La relación entre dos objetos es muy común y se puede encontrar en muchas situaciones en
+vida real. Por lo general, se refiere a crear un objeto especializado a partir de uno más general.
+En OOP, la herencia permite que nuevos objetos adquieran las propiedades de los objetos existentes. 
+<br><br>
+function Person() {<br>
+    this.name = "";<br>
+    this.surname = "";<br>
+}<br><br>
+Un enfoque simple para crear el objeto programador que hereda las propiedades de la persona es
+basado en prototipo. Aquí hay una posible implementación
+<br><br>
+function Programmer() {<br>
+    this.knownLanguage = "";<br>
+}<br>
+   Programmer.prototype = new Person();<br>
+   <br><br>
+   Crearemos un programador con el siguiente código:
+   <br>var programmer = new Programmer();<br>
+    </div>
+    <h3>Polymorphism</h3><br>
+    <div>
+        En la programación orientada a objetos, el polimorfismo se entiende de diferentes maneras, incluso si
+        la base es una noción común: la capacidad de manejar múltiples tipos de datos de manera uniforme.
+        <br><br>
+        public int CountItems(int x) {<br>
+            return x.ToString().Length;<br>
+           }<br>
+           public int CountItems(string x) {<br>
+            return x.Length;<br>
+        }<br><br>
+        El método CountItems () tiene dos firmas, una para enteros y otra para cadenas. Esta
+permite contar el número de dígitos en un número o el número de caracteres en una cadena en un
+de manera uniforme, simplemente llamando al mismo método.
+La sobrecarga también se puede expresar a través de métodos con diferentes números de argumentos,
+como se muestra en el siguiente ejemplo de C #:<br>
+public int Sum(int x, int y) {<br>
+    return Sum(x, y, 0);<br>
+   }<br>
+   public int Sum(int x, int y, int z) {
+    return x+ y + z;<br>
+   }  
+</br><br>
+Aquí, tenemos el método Sum () que puede sumar dos o tres enteros. Lo correcto
+La definición del método se detectará en función del número de argumentos pasados.
+Como desarrolladores de JavaScript, podemos replicar este comportamiento en nuestros scripts. Por ejemplo,
+el método C # CountItems () se convierte en JavaScript de la siguiente manera:<br><br>
+function countItems(x) {<br>
+    return x.toString().length;<br>
+    
+}<br>
+Mientras que el ejemplo de Sum () será el siguiente:<br><br>
+function sum (x, y, z) {<br>
+x = x? x: 0;<br>
+y = y? y: 0;<br>
+z = z? z: 0;<br>
+return x + y + z;<br>
+}<br><br>
+Or, utilizando la sintaxis ES6 más conveniente:<br><br>
+function sum (x = 0, y = 0, z = 0) {<br>
+return x + y + z;<br>
+}<br><br>
+También podemos crear nuestra clase genérica como se muestra en el siguiente código C #<br><br>
+public class Stack<T> {<br>
+    private T[] items;<br>
+    private int count;<br>
+    public void Push(T item) { ... }<br>
+    public T Pop() { ... }<br>
+}<br>
+<br>
+Este código define una implementación de pila típica cuyo tipo de elemento no está definido. Lo haremos
+poder crear, por ejemplo, una pila de cadenas con el siguiente código:
+<br><br>
+var stack = new Stack<String>();<br><br>
+    En
+    De hecho, el tipo de parámetros de la función es inherentemente genérico, ya que su tipo se establece cuando un valor
+    se le asigna La siguiente es una posible implementación de un constructor de pila en
+    JavaScript<br><br>
+    function Stack()<br>
+ this.stack = [];<br>
+ this.pop = function(){<br>
+ return this.stack.pop();<br>
+ }<br>
+ this.push = function(item){<br>
+ this.stack.push(item);<br>
+ }<br>
+}<br>
+<br>
+Veamos un ejemplo de C # para aclarar este concepto<br><br>
+public class Person {<br>
+    public string Name {get; set;}<br>
+    public string SurName {get; set;}<br>
+   }<br>
+   public class Programmer:Person {<br>
+    public String KnownLanguage {get; set;}<br>
+   }<br>
+   public void WriteFullName(Person p) {<br>
+    Console.WriteLine(p.Name + " " + p.SurName);<br>
+   }<br>
+   var a = new Person();<br>
+   a.Name = "John";<br>
+   a.SurName = "Smith";<br>
+   var b = new Programmer();<br>
+   b.Name = "Mario";<br>
+   b.SurName = "Rossi";<br>
+   b.KnownLanguage = "C#";<br>
+   WriteFullName(a); //result: John Smith<br>
+   WriteFullName(b); //result: Mario Rossi<br><br>
+   
+Por supuesto, el ejemplo de C # se puede reproducir fácilmente en JavaScript ya que no tenemos ningún tipo
+restricción. Veamos el código correspondiente:<br><br>
+function Person() {<br>
+    this.name = "";<br>
+    this.surname = "";<br>
+    }<br>
+    function Programmer() {<br>
+     this.knownLanguage = "";<br>
+    }<br>
+    Programmer.prototype = new Person();<br>
+    function writeFullName(p) {<br>
+        console.log(p.name + " " + p.surname);<br>
+       }<br>
+       var a = new Person();<br>
+       a.name = "John";<br>
+       a.surname = "Smith";<br>
+       var b = new Programmer();<br>
+       b.name = "Mario";<br>
+       b.surname = "Rossi";<br>
+       b.knownLanguage = "JavaScript";<br>
+       writeFullName(a); //result: John Smith<br>
+       writeFullName(b); //result: Mario Rossi<br>
+       
+   
+    </div>
+    <h1><center>Working with Encapsulation and
+        Information Hiding 3
+        </center></h1>
+        <h3>Encapsulation and information hiding
+        </h3>
+        <div>
+            La encapsulación es uno de los principios básicos del paradigma OOP. Nos permite agruparlo
+         en un objeto, tanto datos como funcionalidades que operan en esos datos.
+         <h3>Convention-based approach</h3>
+         <br>
+         
+Los objetos JavaScript no se preocupan por la privacidad. Todas las propiedades y métodos son públicos.
+accesible si no se toma precaución. Entonces, si queremos evitar el acceso a algunas propiedades o
+métodos relacionados con los detalles de implementación interna, tenemos que establecer una estrategia.<br><br>
+function TheatreSeats() {<br>
+    this._seats = [];<br>
+   }<br>
+   TheatreSeats.prototype.placePerson = function(person) {<br>
+    this._seats.push(person);<br>
+   };<br><br>
+   Este código define un constructor para objetos que representan asientos en un teatro donde una persona
+se puede colocar. El uso previsto es el siguiente:<br><br>
+var theatreSeats = new TheatreSeats();<br>
+theatreSeats.placePerson({name: "John", surname: "Smith"});<br><br>
+<h3>Privacy levels using closure</h3><br>
+Una manera simple de corregir las inconsistencias del enfoque basado en convenciones es no usar
+propiedades para miembros internos pero declarando variables dentro del constructor, como se muestra en
+El siguiente ejemplo:
+<br><br>
+function TheatreSeats() {<br>
+    var seats = [];<br>
+    this.placePerson = function(person) {<br>
+    seats.push(person);<br>
+    };<br>
+   }<br><br>
+   Una forma sencilla de solucionar el problema: mediante este enfoque, podemos seguir utilizando el constructor de la forma habitual para evitar el acceso
+al contenedor interno real: la variable de los asientos. Estamos explotando lo interno
+entorno de la función TheatreSeats () para ocultar los detalles de implementación y colocar
+Los fundamentos para construir las partes privadas y públicas de los objetos JavaScript. Las inconsistencias del enfoque basado en convenciones no están utilizando
+propiedades para miembros internos pero declarando variables dentro del constructor, como se muestra en
+El siguiente ejemplo:<br><br>
+<h3>Scope and closure
+</h3><br><br>
+Antes de continuar, es útil aclarar algunos conceptos que se usan con mucha frecuencia en
+Programación de JavaScript y sobre la cual construiremos nuestro enfoque para implementar el
+principio de ocultación de información. Comencemos con el siguiente ejemplo:<br><br>
+var greeting = "Good morning";<br>
+function greets(person) {<br>
+ var fullName = person.name + " " + person.surname;<br>
+ function displayGreeting() {<br>
+ console.log(greeting + " " + fullName);<br>
+ }<br>
+ displayGreeting();<br>
+}<br>
+greets({name: "John", surname: "Smith"});<br><br>
+Como regla general, cuando una declaración se refiere a una variable, se busca en el alcance actual, si
+no se encuentra, se busca en el ámbito externo y así sucesivamente hasta que se encuentre o el ámbito global
+es alcanzado. Entonces, en nuestro ejemplo, la referencia a la variable de saludo dentro del
+La función displayGreeting () se busca primero dentro del ámbito de la función. Ya que es
+no definido aquí, se busca en el alcance externo, es decir, el alcance de la función greets ().
+Nuevamente, dado que la variable de saludo no se define aquí, se busca y se encuentra en el exterior
+alcance que es el alcance global.
+El lado interesante de este mecanismo es que, en JavaScript, es posible acceder al exterior
+alcance incluso cuando la función que lo creó ha terminado. Para explicar mejor, reescribe el
+código anterior de la siguiente manera:<br><br>
+var greeting = "Good morning";<br>
+var displayGreeting;<br>
+function greets(person) {<br>
+ var fullName = person.name + " " + person.surname;<br>
+ return function () {<br>
+ console.log(greeting + " " + fullName);<br>
+ }<br>
+}<br>
+displayGreeting = greets({name: "John", surname: "Smith"});<br>
+displayGreeting();<br><br>
+
+El cierre es una herramienta poderosa y se puede usar creativamente para definir patrones de avanzada
+programación, como veremos a lo largo del libro. Lo usaremos en este capítulo para
+implementar información oculta. Recordemos el ejemplo anterior de nuestro constructor.
+definición:<br><br>
+function TheatreSeats() {<br>
+    var seats = [];<br>
+    this.placePerson = function(person) {<br>
+    seats.push(person);<br>
+    };><br>
+   }<br><br>
+   <h3>Privacy levels</h3><br><br>
+   Por lo tanto, explotando el cierre de un constructor podemos implementar la ocultación de información
+principio para objetos JavaScript. Como podemos ver, sin embargo, la nueva definición de
+El constructor TheatreSeats () es ligeramente diferente del original. Mientras en el
+definición original adjuntamos el método placePerson () al prototipo de
+constructor, ahora no podemos seguir este enfoque. De hecho, los métodos del prototipo no pueden
+acceder al cierre del constructor, por lo que el siguiente código no puede funcionar<br><br>
+function TheatreSeats() {<br>
+    var seats = [];<br>
+   TheatreSeats.prototype.placePerson = function(person) {<br>
+    seats.push(person);<br>
+   };<br>
+   var theatreSeats = new TheatreSeats();<br>
+   theatreSeats.placePerson({name: "John", surname: "Smith"}); //exception<br><br>
+   El siguiente código muestra una versión del constructor TheatreSeats () que implementa
+Los tres niveles de privacidad:<br><br>
+function TheatreSeats() {<br>
+    var seats = [];<br>
+    this.placePerson = function(person) {<br>
+    seats.push(person);<br>
+    };<br>
+    this.countOccupiedSeats = function() {<br>
+    return seats.length;<br>
+    };<br>
+    this.maxSize = 10;<br>
+   }<br>
+   TheatreSeats.prototype.isSoldOut = function() {<br>
+    return this.countOccupiedSeats () >= this.maxSize;<br>
+   };<br>
+   TheatreSeats.prototype.countFreeSeats = function() {<br>
+    return this.maxSize - this.countOccupiedSeats();<br>
+   };<br><br>
+   <h3>Benefits and drawbacks</h3><br><br>
+   En comparación con el enfoque basado en la convención, el uso del cierre para definir los tres niveles de
+La privacidad es mucho más efectiva. En realidad, otorga protección de datos privados y expone solo
+a qué necesitan acceder los desarrolladores para usar el objeto. Sin embargo, esta solución sufre de
+algunos defectos
+El primer punto es puramente formal. Ambos métodos privilegiados y funciones privadas rompen el
+separación de preocupaciones entre el constructor y el prototipo de instancia de un objeto. En
+De hecho, el constructor debe ser responsable de la inicialización de datos de una instancia de objeto. los
+El prototipo debe ser responsable de las definiciones de métodos generales y las funcionalidades compartidas.
+Al definir métodos dentro del constructor, le estamos dando una responsabilidad por la cual tiene
+No ha sido diseñado.
+Otro inconveniente se refiere al consumo de memoria. Al adjuntar un método al prototipo
+de un constructor, compartimos la funcionalidad entre todas las instancias creadas por el constructor.
+El mecanismo prototipo nos otorga solo una copia de la definición del método que existe en el
+solicitud. En cambio, cada definición de método privilegiado se replica para cada instancia de objeto,
+aumentando innecesariamente el consumo de memoria.
+Para mitigar el consumo de memoria, podemos elegir definir un conjunto mínimo de
+métodos privilegiados y delegar en métodos públicos aquellas funcionalidades resultantes de
+La composición de métodos privilegiados. Utilizamos este enfoque para isSoldOut () y
+definición de métodos countFreeSeats (). Aunque este expediente nos permite reducir
+consumo de memoria, tendremos alguna pérdida de rendimiento debido al acceso indirecto a la
+cierre del constructor como contraparte<br><br>
+<h3>A meta-closure approach</h3><br><br>
+
+La idea básica del enfoque anterior se basa en la naturaleza del cierre. El constructor
+el entorno está protegido de forma predeterminada y permanece accesible desde el interior del
+constructor en sí, incluso después de que termina. Sin embargo, dado que el cierre se crea cuando el
+se llama al constructor, cada instancia de objeto debe tener datos privados y privilegiados
+métodos definidos dentro del contexto del constructor. Una solución ideal debe ser una que
+protege los datos privados permitiéndoles ser accesibles desde fuera del cierre del constructor. Esta
+debería ser una especie de meta-cierre que ofrezca un nivel adicional de protección: un cierre accesible
+desde fuera del constructor de objetos por miembros prototipo que aún ocultan datos privados de la
+objeto resultante Este meta-cierre se puede construir usando una función invocada inmediatamente
+Expresión (IIFE).<br><br>
+Usemos WeakMaps para resolver nuestros problemas:<br><br>
+var TheatreSeats = (function() {<br>
+    var priv = new WeakMap();<br>
+    function TheatreSeatsConstructor() {<br>
+    var privateMembers = {seats: []};<br>
+    priv.set(this, privateMembers);<br>
+    this.maxSize = 10;<br>
+    }<br>
+    TheatreSeatsConstructor.prototype.placePerson = function(person) {<br>
+    priv.get(this).seats.push(person);<br>
+    };<br>
+    TheatreSeatsConstructor.prototype.countOccupiedSeats = function() {<br>
+    return priv.get(this).seats.length;<br>
+    };<br>
+    TheatreSeatsConstructor.prototype.isSoldOut = function() {<br>
+    return priv.get(this).seats.length >= this.maxSize;<br>
+    };<br>
+    TheatreSeatsConstructor.prototype.countFreeSeats = function() {<br>
+    return this.maxSize - priv.get(this).seats.length;<br>
+    };<br>
+    return TheatreSeatsConstructor;<br>
+   }());<br><br>
+   Podemos agregar un toque cosmético a nuestro código para hacerlo menos detallado definiendo un
+función personalizada para acceder a miembros privados:<br><br>
+var TheatreSeats = (function() {<br>
+    var priv = new WeakMap();<br>
+    var _= function(instance) {return priv.get(instance);};<br>
+ function TheatreSeatsConstructor() {<br>
+ var privateMembers = {seats: []};<br>
+ priv.set(this, privateMembers);<br>
+ this.maxSize = 10;<br>
+ }<br>
+ TheatreSeatsConstructor.prototype.placePerson = function(person) {<br>
+ _(this).seats.push(person);<br>
+ };<br>
+ TheatreSeatsConstructor.prototype.countOccupiedSeats = function() {<br>
+ return _(this).seats.length;<br>
+ };<br>
+ TheatreSeatsConstructor.prototype.isSoldOut = function() {<br>
+ return _(this).seats.length >= this.maxSize;<br>
+ };<br>
+ TheatreSeatsConstructor.prototype.countFreeSeats = function() {<br>
+ return this.maxSize - _(this).seats.length;<br>
+ };<br>
+ return TheatreSeatsConstructor;<br>
+}());<br><br>
+<h3>Controlling access to public properties</h3><br><br>
+Cuando definimos propiedades públicas, no ponemos ninguna restricción a su accesibilidad.
+Considere la definición literal de persona:<br><br>
+var person = { name: "John", surname: "Smith"};<br><br>
+
+Las propiedades públicas se pueden leer y escribir y se pueden establecer en cualquier valor. El seguimiento
+las tareas son perfectamente legales:<br><br>
+var personName = person.name;<br>
+person.name = "Mario";<br>
+person.surname = [1, 2, 3];<br>
+}<br><br>
+Pero para el significado que queremos darle al objeto, estas asignaciones pueden no tener sentido
+o no ser deseable. ¡Asignar una matriz al apellido de una persona es definitivamente extraño!<br><br>
+var person = {<br>
+    name: "John",<br>
+    surname: "Smith",<br>
+    fullName: "John Smith",<br>
+    email: "john.smith@packtpub.com"<br>
+   };<br><br>
+   Podemos obtener este comportamiento usando métodos en lugar de propiedades, como se muestra a continuación
+ejemplo<br><br>
+var person = {<br>
+    name: "John",<br>
+    surname: "Smith",<br>
+    getFullName: function() { ... },<br>
+    getEmail: function() { ... },<br>
+    setEmail: function() { ... }<br>
+   };<br><br>
+   <h3>Information hiding in ES6 classes</h3>
+   
+Implementar el principio de ocultación de información utilizando las mejoras de sintaxis de ES6 no es tan
+diferente. Como dijimos al presentarlos, las clases de ES6 no son más que un nuevo
+Enfoque sintáctico para definir constructores y métodos para nuestros objetos. Los principales beneficios
+incluir una sintaxis más concisa y la aplicación de las mejores prácticas en el ámbito interno.
+implementación de creación de objetos.<br><br>
+var TheatreSeats = (function() {<br>
+    "use strict";<br>
+    var priv = new WeakMap();<br>
+    var _= function(instance) {return priv.get(instance);};<br>
+    class TheatreSeatsClass {<br>
+    constructor() {<br>
+    var privateMembers = {seats: []};<br>
+    priv.set(this, privateMembers);<br>
+    this.maxSize = 10;<br>
+    }<br>
+    placePerson(person) {<br>
+    _(this).seats.push(person);<br>
+    }<br>
+    countOccupiedSeats() {<br>
+    return _(this).seats.length;<br>
+    }<br>
+    isSoldOut() {<br>
+    return _(this).seats.length >= this.maxSize;<br>
+    }<br>
+    countFreeSeats() {<br>
+    return this.maxSize - _(this).seats.length;<br>
+    }<br>
+    }<br>
+    return TheatreSeatsClass;<br>
+   }());<br><br>
+   
+
+
+        </div>
+</body>
+</html>
